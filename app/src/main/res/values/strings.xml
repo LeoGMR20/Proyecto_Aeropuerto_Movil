@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Proyecto_Aeropuerto</string>
+    <string name="txtTitAero">Aerpuerto Internacional\nLa Paz - Bolivia</string>
 </resources>
