@@ -4,17 +4,21 @@
     <string name="txtDescIvAvionMain">Imagen logo del main</string>
     <string name="txtTituloSignIn">Inicio de sesión</string>
     <string name="txtIniSesion">Iniciar Sesión</string>
-    <string name="txtCodAdmin">Código de administrador</string>
+    <string name="txtCod">Código</string>
     <string name="txtClave">Contraseña</string>
     <string name="txtAddAdmin">Añadir Administrador</string>
     <string name="txtAddVuelo">Añadir Vuelo</string>
     <string name="txtTitMenuAdmin">Menú Administrador</string>
     <string name="txtTitAddAdmin">Añadir Administrador</string>
+    <string name="txtTitCheckIn">Check In</string>
     <string name="txtAdd">Añadir</string>
     <string name="txtCI">Carnet de identidad (C.I)</string>
     <string name="txtNombres">Nombres</string>
     <string name="txtApPat">Apellido Paterno</string>
     <string name="txtApMat">Apellido Materno</string>
+    <string name="txtAps">Apellidos</string>
+    <string name="txtCodRes">Código de reserva</string>
+    <string name="txtIden">Identificar</string>
     <string name="txtPassword">Contraseña</string>
     <string name="txtConfirmPassword">Confirmar Contraseña</string>
 </resources>
