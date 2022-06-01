@@ -48,7 +48,7 @@ public class InicioSesionAdminActivity extends AppCompatActivity {
     }
 
     private void pasarOtraPantalla() {
-        /*Intent intencionInicioSesionAdmin = new Intent(this,MenuAdminActivity.class);
-        startActivity(intencionInicioSesionAdmin);*/
+        Intent intencionInicioSesionAdmin = new Intent(this,MenuAdminActivity.class);
+        startActivity(intencionInicioSesionAdmin);
     }
 }

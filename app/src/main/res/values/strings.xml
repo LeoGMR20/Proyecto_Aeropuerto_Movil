@@ -6,4 +6,7 @@
     <string name="txtIniSesion">Iniciar Sesión</string>
     <string name="txtCodAdmin">Código de administrador</string>
     <string name="txtClave">Contraseña</string>
+    <string name="txtAddAdmin">Añadir Administrador</string>
+    <string name="txtAddVuelo">Añadir vuelo</string>
+    <string name="txtTitMenuAdmin">Menú Administrador</string>
 </resources>
