@@ -38,11 +38,11 @@ public class MenuAdminActivity extends AppCompatActivity {
         Intent intencionAdmin;
         switch (pantalla){
             case 1:
-                /*intencionAdmin = new Intent(this.AddAdmin.class);
-                startActivity(intencionAdmin);*/
+                intencionAdmin = new Intent(this,AddAdminActivity.class);
+                startActivity(intencionAdmin);
                 break;
             case 2:
-                /*intencionAdmin = new Intent(this.AddVuelo.class);
+                /*intencionAdmin = new Intent(this,AddVueloActivity.class);
                 startActivity(intencionAdmin);*/
                 break;
         }

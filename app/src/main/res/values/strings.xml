@@ -7,6 +7,14 @@
     <string name="txtCodAdmin">Código de administrador</string>
     <string name="txtClave">Contraseña</string>
     <string name="txtAddAdmin">Añadir Administrador</string>
-    <string name="txtAddVuelo">Añadir vuelo</string>
+    <string name="txtAddVuelo">Añadir Vuelo</string>
     <string name="txtTitMenuAdmin">Menú Administrador</string>
+    <string name="txtTitAddAdmin">Añadir Administrador</string>
+    <string name="txtAdd">Añadir</string>
+    <string name="txtCI">Carnet de identidad (C.I)</string>
+    <string name="txtNombres">Nombres</string>
+    <string name="txtApPat">Apellido Paterno</string>
+    <string name="txtApMat">Apellido Materno</string>
+    <string name="txtPassword">Contraseña</string>
+    <string name="txtConfirmPassword">Confirmar Contraseña</string>
 </resources>

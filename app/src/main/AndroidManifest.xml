@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Proyecto_Aeropuerto">
         <activity
+            android:name=".AddAdminActivity"
+            android:exported="false" />
+        <activity
             android:name=".MenuAdminActivity"
             android:exported="false" />
         <activity
