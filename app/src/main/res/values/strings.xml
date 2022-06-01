@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Proyecto_Aeropuerto</string>
     <string name="txtTitAero">Aerpuerto Internacional\nLa Paz - Bolivia</string>
+    <string name="txtDescIvAvionMain">Imagen logo del main</string>
+    <string name="txtTituloSignIn">Inicio de sesión</string>
+    <string name="txtIniSesion">Iniciar Sesión</string>
+    <string name="txtCodAdmin">Código de administrador</string>
+    <string name="txtClave">Contraseña</string>
 </resources>

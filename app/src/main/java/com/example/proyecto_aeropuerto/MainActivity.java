@@ -88,11 +88,11 @@ public class MainActivity extends AppCompatActivity {
             case 5:
                 intencionMain = new Intent(this,ControlAeronavesActivity.class);
                 startActivity(intencionMain);
-                break;
-            case 6:
-                intencionMain = new Intent(this,InicioSesionActivity.class);
-                startActivity(intencionMain);
                 break;*/
+            case 6:
+                intencionMain = new Intent(this,InicioSesionAdminActivity.class);
+                startActivity(intencionMain);
+                break;
         }
     }
 }
