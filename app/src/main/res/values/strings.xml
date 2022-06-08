@@ -21,4 +21,6 @@
     <string name="txtIden">Identificar</string>
     <string name="txtPassword">Contraseña</string>
     <string name="txtConfirmPassword">Confirmar Contraseña</string>
+    <string name="txtBienvenida">Bienvenid@ a\nAeropuerto El Alto</string>
+    <string name="txtPetCheck">Registra a tu mascota</string>
 </resources>

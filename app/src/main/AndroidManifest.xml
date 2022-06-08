@@ -10,6 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Proyecto_Aeropuerto">
         <activity
+            android:name=".PetCheckActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BienvenidaActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".CheckInActivity"
             android:exported="false" />
         <activity
