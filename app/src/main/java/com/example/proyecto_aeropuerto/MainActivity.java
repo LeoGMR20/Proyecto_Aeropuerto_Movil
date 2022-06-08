@@ -12,6 +12,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.proyecto_aeropuerto.databinding.ActivityBienvenidaBinding;
+import com.example.proyecto_aeropuerto.databinding.ActivityMainBinding;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -20,20 +23,17 @@ public class MainActivity extends AppCompatActivity {
     //Atributos
 
     private ArrayList<String> opciones;
-
-    //Componentes visuales
-    private TextView tvTitulo;
-    private ImageView ivAvionMain;
-    private Spinner spOpciones;
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        inicializarVistas();
+        //setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         popularSpinnerOpciones();
         //Evento para el item seleccionado (o no) del spinner
-        spOpciones.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        binding.spOpciones.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 pasarOtraPantalla(i);
@@ -44,12 +44,27 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-    }
 
-    private void inicializarVistas() {
-        tvTitulo = findViewById(R.id.tvTitulo);
-        ivAvionMain = findViewById(R.id.ivAvionMain);
-        spOpciones = findViewById(R.id.spOpciones);
+        //Botones aerolíneas
+
+        binding.btnBoa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                vuelos(1);
+            }
+        });
+        binding.btnAmazonas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                vuelos(2);
+            }
+        });
+        binding.btnEcojet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                vuelos(3);
+            }
+        });
     }
 
     private void popularSpinnerOpciones() {
@@ -60,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
                 android.R.layout.simple_spinner_item,
                 opciones
         );
-        spOpciones.setAdapter(adaptador);
+        binding.spOpciones.setAdapter(adaptador);
     }
 
     private void pasarOtraPantalla(int seleccion){
@@ -94,5 +109,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intencionMain);
                 break;
         }
+    }
+
+    private void vuelos(int val) {
     }
 }

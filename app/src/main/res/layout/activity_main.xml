@@ -102,23 +102,26 @@
                     android:textSize="20sp" />
 
                 <ImageButton
-                    android:id="@+id/imageButton4"
+                    android:id="@+id/btnBoa"
                     android:layout_width="350dp"
                     android:layout_height="200dp"
                     android:baselineAlignBottom="false"
-                    app:srcCompat="@drawable/boa_logo" />
+                    app:srcCompat="@drawable/boa_logo"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
                 <ImageButton
-                    android:id="@+id/imageButton5"
+                    android:id="@+id/btnAmazonas"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/amazonas_logo" />
+                    app:srcCompat="@drawable/amazonas_logo"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
                 <ImageButton
-                    android:id="@+id/imageButton6"
+                    android:id="@+id/btnEcojet"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/ecojet_logo" />
+                    app:srcCompat="@drawable/ecojet_logo"
+                    tools:ignore="SpeakableTextPresentCheck" />
             </LinearLayout>
 
         </LinearLayout>
