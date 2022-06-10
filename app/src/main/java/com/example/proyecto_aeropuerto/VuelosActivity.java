@@ -7,32 +7,27 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.proyecto_aeropuerto.databinding.ActivityBienvenidaBinding;
 import com.example.proyecto_aeropuerto.databinding.ActivityMainBinding;
+import com.example.proyecto_aeropuerto.databinding.ActivityVuelosBinding;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class MainActivity extends AppCompatActivity {
+public class VuelosActivity extends AppCompatActivity {
 
     //Atributos
 
+    private ActivityVuelosBinding binding;
     private ArrayList<String> opciones;
-    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_main);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        binding = ActivityVuelosBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         popularSpinnerOpciones();
-        //Evento para el item seleccionado (o no) del spinner
         binding.spOpciones.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -42,27 +37,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
-            }
-        });
-
-        //Botones aerolíneas
-
-        binding.btnBoa.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                vuelos(1);
-            }
-        });
-        binding.btnAmazonas.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                vuelos(2);
-            }
-        });
-        binding.btnEcojet.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                vuelos(3);
             }
         });
     }
@@ -96,8 +70,5 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intencionMain);
                 break;
         }
-    }
-
-    private void vuelos(int val) {
     }
 }

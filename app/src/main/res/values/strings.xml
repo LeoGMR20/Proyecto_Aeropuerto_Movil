@@ -26,4 +26,5 @@
     <string name="txtHorSalida">Horarios de salida</string>
     <string name="txtHorLlegada">Horarios de llegada</string>
     <string name="txtElijaAero">Elija su aerolínea de preferencia</string>
+    <string name="txtVuelo">Vuelos disponibles</string>
 </resources>
