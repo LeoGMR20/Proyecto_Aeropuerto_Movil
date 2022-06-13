@@ -62,7 +62,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView"
+                    android:id="@+id/tvTitHoraSalida"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/txtHorSalida"
@@ -78,7 +78,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/tvTitHoraLlegada"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
@@ -94,7 +94,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/tvAerolineaPreferencia"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/txtElijaAero"
@@ -103,23 +103,25 @@
 
                 <ImageButton
                     android:id="@+id/btnBoa"
-                    android:layout_width="350dp"
-                    android:layout_height="200dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
                     android:baselineAlignBottom="false"
                     app:srcCompat="@drawable/boa_logo"
                     tools:ignore="SpeakableTextPresentCheck" />
 
                 <ImageButton
                     android:id="@+id/btnAmazonas"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
                     app:srcCompat="@drawable/amazonas_logo"
                     tools:ignore="SpeakableTextPresentCheck" />
 
                 <ImageButton
                     android:id="@+id/btnEcojet"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
                     app:srcCompat="@drawable/ecojet_logo"
                     tools:ignore="SpeakableTextPresentCheck" />
             </LinearLayout>

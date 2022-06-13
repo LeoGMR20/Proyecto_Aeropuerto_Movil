@@ -1,9 +1,12 @@
 package com.example.proyecto_aeropuerto;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -68,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void popularSpinnerOpciones() {
-        opciones = new ArrayList<>(Arrays.asList("Escoja una opción","Inicio", "Vuelos", "Iniciar sesión"));
+        opciones = new ArrayList<>(Arrays.asList("Escoja una opción","Inicio", "Vuelos", "Iniciar sesión", "Salir"));
         ArrayAdapter<String> adaptador = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_spinner_item,
@@ -95,9 +98,43 @@ public class MainActivity extends AppCompatActivity {
                 intencionMain = new Intent(this,InicioSesionAdminActivity.class);
                 startActivity(intencionMain);
                 break;
+            case 4:
+                salir();
+                break;
         }
     }
 
     private void vuelos(int val) {
+    }
+
+    /*Métodos para salir de la aplicación*/
+
+    private void salir() {
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode == KeyEvent.KEYCODE_BACK) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("¿Desea salir de la aplicación?")
+                    .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            salir();
+                        }
+                    })
+                    .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                        }
+                    });
+            builder.show();
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

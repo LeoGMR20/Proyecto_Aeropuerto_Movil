@@ -23,6 +23,9 @@
     <string name="txtConfirmPassword">Confirmar Contraseña</string>
     <string name="txtBienvenida">Bienvenid@ a\nAeropuerto El Alto</string>
     <string name="txtPetCheck">Registra a tu mascota</string>
+    <string name="txtRegsMascota">Registar Mascota</string>
+    <string name="txtVacunado">¿La mascota está vacunada?</string>
+    <string name="txtPesoKg">Peso (Kg)</string>
     <string name="txtHorSalida">Horarios de salida</string>
     <string name="txtHorLlegada">Horarios de llegada</string>
     <string name="txtElijaAero">Elija su aerolínea de preferencia</string>
