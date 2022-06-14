@@ -30,4 +30,12 @@
     <string name="txtHorLlegada">Horarios de llegada</string>
     <string name="txtElijaAero">Elija su aerolínea de preferencia</string>
     <string name="txtVuelo">Vuelos disponibles</string>
+    <string name="txtCerrarSesionAdmin">Cerrar Sesión</string>
+    <string name="txtTitEquipaje">Equipaje</string>
+    <string name="txtResEquipaje">Registrar Equipaje</string>
+
+    <!--Reserva-->
+    <string name="txtTitReserva">Reserva tu vuelo</string>
+    <string name="txtReservar">Reservar Vuelo</string>
+    <string name="txtNumDoc">Número de documento</string>
 </resources>
