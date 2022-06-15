@@ -27,14 +27,29 @@ public class VuelosActivity extends AppCompatActivity {
     Bundle filtroMain;
     int valAerolinea;
 
+    //Generar vuelos
+
+    private ArrayList<Vuelo> vuelos;
+    private ListaVuelosAdapter adaptadorVuelos;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityVuelosBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         popularSpinnerOpciones();
+
+        //Filtrado
         filtroMain = getIntent().getExtras();
         valAerolinea = filtroMain.getInt("filtroAerolinea");
+
+        //-------
+
+        adaptadorVuelos = new ListaVuelosAdapter(vuelos,this);
+        binding.lvVuelos.setAdapter(adaptadorVuelos);
+
+        //Clicks
+
         binding.spOpciones.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -43,6 +58,13 @@ public class VuelosActivity extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        binding.lvVuelos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
             }
         });

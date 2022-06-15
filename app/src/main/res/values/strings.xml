@@ -44,5 +44,8 @@
     <string name="txtVuelosDisp">Vuelos disponibles</string>
     <string name="txtfecha">Fecha:</string>
     <string name="txtDestino">Destino:</string>
-    <string name="txtHora">Hora:</string>
+    <string name="txtHoraSalida">Hora salida:</string>
+    <string name="txtHoraLlegada">Hora llegada:</string>
+    <string name="txtOrigen">Origen:</string>
+    <string name="txtAerolinea">Aerolínea:</string>
 </resources>

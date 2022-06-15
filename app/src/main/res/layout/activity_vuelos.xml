@@ -97,7 +97,7 @@
                     android:textStyle="bold" />
 
                 <ListView
-                    android:id="@+id/ivVuelos"
+                    android:id="@+id/lvVuelos"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp" />

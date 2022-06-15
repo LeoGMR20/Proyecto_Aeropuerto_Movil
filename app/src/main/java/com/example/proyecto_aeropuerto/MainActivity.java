@@ -28,12 +28,27 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<String> opciones;
     private ActivityMainBinding binding;
 
+    //Generar vuelos
+
+    private ArrayList<Vuelo> vuelosSalida;
+    private ListaVuelosSalidaAdapter adaptadorVuelosSalida;
+    private ArrayList<Vuelo> vuelosLlegada;
+    private ListaVuelosLlegadaAdapter adaptadorVuelosLlegada;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_main);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        //Cargado de vuelos
+
+        adaptadorVuelosSalida = new ListaVuelosSalidaAdapter(vuelosSalida,this);
+        binding.lvVuelosSalida.setAdapter(adaptadorVuelosSalida);
+        adaptadorVuelosLlegada = new ListaVuelosLlegadaAdapter(vuelosLlegada,this);
+        binding.lvVuelosLlegada.setAdapter(adaptadorVuelosLlegada);
+
         popularSpinnerOpciones();
         //Evento para el item seleccionado (o no) del spinner
         binding.spOpciones.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -47,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
+        
         //Botones aerolíneas
 
         binding.btnBoa.setOnClickListener(new View.OnClickListener() {

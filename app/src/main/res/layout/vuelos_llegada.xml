@@ -7,19 +7,19 @@
     android:background="#1E88E5">
 
     <TextView
-        android:id="@+id/tvFechaSalidaVSalida"
+        android:id="@+id/tvHoraLlegadaVLlegada"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="115dp"
+        android:layout_marginStart="90dp"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tvDestinoSalida"
-        app:layout_constraintTop_toBottomOf="@+id/tvConFechaSalidaVSalida"
-        app:layout_constraintVertical_bias="0.49" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvFechaLlegadaVLlegada"
+        app:layout_constraintTop_toBottomOf="@+id/tvConHoraLlegadaVLlegada" />
 
     <TextView
-        android:id="@+id/tvConCodVueloSalida"
+        android:id="@+id/tvConHoraLlegada"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
@@ -32,7 +32,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvCodVueloSalida"
+        android:id="@+id/tvVueloLlegada"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
@@ -40,10 +40,34 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvConCodVueloSalida" />
+        app:layout_constraintTop_toBottomOf="@+id/tvConHoraLlegada" />
 
     <TextView
-        android:id="@+id/tvConFechaSalidaVSalida"
+        android:id="@+id/tvConOrigenLlegada"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="15dp"
+        android:text="@string/txtOrigen"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/tvConHoraLlegada"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvOrigenLlegada"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvVueloLlegada"
+        app:layout_constraintTop_toBottomOf="@+id/tvConOrigenLlegada" />
+
+    <TextView
+        android:id="@+id/tvConFechaLlegadaVLlegada"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
@@ -52,57 +76,31 @@
         android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/tvConDestinoSalida"
+        app:layout_constraintStart_toEndOf="@+id/tvConOrigenLlegada"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvDestinoSalida"
+        android:id="@+id/tvFechaLlegadaVLlegada"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
+        android:layout_marginStart="105dp"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tvCodVueloSalida"
-        app:layout_constraintTop_toBottomOf="@+id/tvConDestinoSalida" />
+        app:layout_constraintStart_toEndOf="@+id/tvOrigenLlegada"
+        app:layout_constraintTop_toBottomOf="@+id/tvConFechaLlegadaVLlegada" />
 
     <TextView
-        android:id="@+id/tvConDestinoSalida"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="15dp"
-        android:text="@string/txtDestino"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/tvConCodVueloSalida"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tvConHoraSalidaVSalida"
+        android:id="@+id/tvConHoraLlegadaVLlegada"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginTop="15dp"
-        android:text="@string/txtHoraSalida"
+        android:text="@string/txtHoraLlegada"
         android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tvConFechaSalidaVSalida"
+        app:layout_constraintStart_toEndOf="@+id/tvConFechaLlegadaVLlegada"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tvHoraSalidaVSalida"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="85dp"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tvFechaSalidaVSalida"
-        app:layout_constraintTop_toBottomOf="@+id/tvConHoraSalidaVSalida" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

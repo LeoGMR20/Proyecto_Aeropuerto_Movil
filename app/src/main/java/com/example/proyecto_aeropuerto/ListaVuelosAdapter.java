@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class ListaVuelosAdapter extends BaseAdapter {
 
-    //Atrbitos
+    //Atributos
 
     private ArrayList<Vuelo> vuelos;
     private VuelosSalidaBinding vueloBinding;
