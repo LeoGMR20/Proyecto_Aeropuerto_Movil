@@ -105,6 +105,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void vuelos(int val) {
+        Intent intencionVuelo = new Intent(this, VuelosActivity.class);
+        intencionVuelo.putExtra("filtroAerolinea",val);
+        startActivity(intencionVuelo);
     }
 
     /*Métodos para salir de la aplicación*/

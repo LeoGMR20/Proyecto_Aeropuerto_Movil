@@ -24,6 +24,8 @@ public class VuelosActivity extends AppCompatActivity {
 
     private ActivityVuelosBinding binding;
     private ArrayList<String> opciones;
+    Bundle filtroMain;
+    int valAerolinea;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,8 @@ public class VuelosActivity extends AppCompatActivity {
         binding = ActivityVuelosBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         popularSpinnerOpciones();
+        filtroMain = getIntent().getExtras();
+        valAerolinea = filtroMain.getInt("filtroAerolinea");
         binding.spOpciones.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {

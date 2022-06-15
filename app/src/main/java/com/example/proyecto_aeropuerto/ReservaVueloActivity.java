@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 
 import com.android.volley.RequestQueue;
 import com.example.proyecto_aeropuerto.databinding.ActivityReservaVueloBinding;
@@ -11,11 +12,15 @@ import com.example.proyecto_aeropuerto.databinding.ActivityReservaVueloBinding;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class ReservaVueloActivity extends AppCompatActivity {
 
     //Atributos
 
     private ActivityReservaVueloBinding binding;
+    private ArrayList<String> tiposDocumento;
     private RequestQueue colaPeticiones;
     private JSONObject parametros;
 
@@ -49,5 +54,15 @@ public class ReservaVueloActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    private void popularSpinnerTiposDocumento() {
+        tiposDocumento = new ArrayList<>(Arrays.asList("Escoja una opción","CI", "NIT", "Pasaporte"));
+        ArrayAdapter<String> adaptador = new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_spinner_item,
+                tiposDocumento
+        );
+        binding.spTipoDocumentoReserva.setAdapter(adaptador);
     }
 }

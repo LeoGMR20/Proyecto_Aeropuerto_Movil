@@ -26,16 +26,23 @@
     <string name="txtRegsMascota">Registar Mascota</string>
     <string name="txtVacunado">¿La mascota está vacunada?</string>
     <string name="txtPesoKg">Peso (Kg)</string>
-    <string name="txtHorSalida">Horarios de salida</string>
-    <string name="txtHorLlegada">Horarios de llegada</string>
+    <string name="txtVueSalida">Vuelos de salida</string>
+    <string name="txtVueLlegada">Vuelos de llegada</string>
     <string name="txtElijaAero">Elija su aerolínea de preferencia</string>
-    <string name="txtVuelo">Vuelos disponibles</string>
     <string name="txtCerrarSesionAdmin">Cerrar Sesión</string>
     <string name="txtTitEquipaje">Equipaje</string>
     <string name="txtResEquipaje">Registrar Equipaje</string>
 
     <!--Reserva-->
-    <string name="txtTitReserva">Reserva tu vuelo</string>
+    <string name="txtTitReserva">Reserva tu vuelo\ningresando tus datos</string>
     <string name="txtReservar">Reservar Vuelo</string>
     <string name="txtNumDoc">Número de documento</string>
+
+    <!--Vuelos-->
+    <string name="txtTitVuelo">Vuelos</string>
+    <string name="txtVuelo">Vuelo:</string>
+    <string name="txtVuelosDisp">Vuelos disponibles</string>
+    <string name="txtfecha">Fecha:</string>
+    <string name="txtDestino">Destino:</string>
+    <string name="txtHora">Hora:</string>
 </resources>
