@@ -17,11 +17,11 @@ import com.example.proyecto_aeropuerto.databinding.ActivityReservaVueloBinding;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 
 public class ReservaVueloActivity extends AppCompatActivity {
 
@@ -56,7 +56,7 @@ public class ReservaVueloActivity extends AppCompatActivity {
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
                 fechaNacC = i+"/"+i1+"/"+i2;
                 try {
-                    fechaNac = new SimpleDateFormat("dd/MM/yyyy").parse(fechaNacC);
+                    fechaNac = (Date) new SimpleDateFormat("dd/MM/yyyy").parse(fechaNacC);
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
