@@ -37,6 +37,7 @@
     <string name="txtTitReserva">Reserva tu vuelo\ningresando tus datos</string>
     <string name="txtReservar">Reservar Vuelo</string>
     <string name="txtNumDoc">Número de documento</string>
+    <string name="txtFechaNac">Fecha de nacimiento</string>
 
     <!--Vuelos-->
     <string name="txtTitVuelo">Vuelos</string>

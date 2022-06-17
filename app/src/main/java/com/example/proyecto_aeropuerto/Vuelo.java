@@ -1,34 +1,34 @@
 package com.example.proyecto_aeropuerto;
 
-public class Vuelo {
+import java.io.Serializable;
+
+public class Vuelo implements Serializable {
 
     //Atributos
 
     private int codVuelo;
-    private String origen;
-    private String destino;
+    private int origen;
+    private int destino;
     private String nitAerolinea;
     private boolean internacional;
-    private String clase;
 
-    public Vuelo(int codVuelo, String origen, String destino, String nitAerolinea, boolean internacional, String clase) {
+    public Vuelo(int codVuelo, int origen, int destino, String nitAerolinea, boolean internacional) {
         this.codVuelo = codVuelo;
         this.origen = origen;
         this.destino = destino;
         this.nitAerolinea = nitAerolinea;
         this.internacional = internacional;
-        this.clase = clase;
     }
 
     public int getCodVuelo() {
         return codVuelo;
     }
 
-    public String getOrigen() {
+    public int getOrigen() {
         return origen;
     }
 
-    public String getDestino() {
+    public int getDestino() {
         return destino;
     }
 
@@ -38,9 +38,5 @@ public class Vuelo {
 
     public boolean isInternacional() {
         return internacional;
-    }
-
-    public String getClase() {
-        return clase;
     }
 }

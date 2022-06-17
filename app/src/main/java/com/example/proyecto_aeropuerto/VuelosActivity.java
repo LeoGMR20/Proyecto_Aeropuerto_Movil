@@ -6,14 +6,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.proyecto_aeropuerto.databinding.ActivityMainBinding;
 import com.example.proyecto_aeropuerto.databinding.ActivityVuelosBinding;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,7 +30,7 @@ public class VuelosActivity extends AppCompatActivity {
     //Atributos
 
     private ActivityVuelosBinding binding;
-    private ArrayList<String> opciones;
+    private ArrayList<String> opciones  = new ArrayList<>();
     Bundle filtroMain;
     int valAerolinea;
 
@@ -31,6 +38,10 @@ public class VuelosActivity extends AppCompatActivity {
 
     private ArrayList<Vuelo> vuelos;
     private ListaVuelosAdapter adaptadorVuelos;
+    private RequestQueue colaPeticiones;
+
+    private final String URL_BASE = "http://192.168.0.125/univalleDemoB";
+    private String endPoint = "/productos.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +51,8 @@ public class VuelosActivity extends AppCompatActivity {
         popularSpinnerOpciones();
 
         //Filtrado
-        filtroMain = getIntent().getExtras();
-        valAerolinea = filtroMain.getInt("filtroAerolinea");
+        /*filtroMain = getIntent().getExtras();
+        valAerolinea = filtroMain.getInt("filtroAerolinea");*/
 
         //-------
 
@@ -65,9 +76,51 @@ public class VuelosActivity extends AppCompatActivity {
         binding.lvVuelos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
+                irAReservarVuelo(i);
             }
         });
+    }
+
+    private void peticionServicioWeb() {
+        JsonArrayRequest peticionInformacion = new JsonArrayRequest(
+                Request.Method.GET,
+                URL_BASE+endPoint,
+                null,
+                response -> {
+                    if (response.length() > 0) {
+                        Log.d("TAG", response.toString());
+                        for (int i = 0; i < response.length(); i++) {
+                            try {
+                                JSONObject objeto = new JSONObject(response.get(i).toString());
+                                Vuelo vuelo = new Vuelo(
+                                        objeto.getInt("codVuelo"),
+                                        objeto.getInt("origen"),
+                                        objeto.getInt("destino"),
+                                        objeto.getString("nitAerolinea"),
+                                        objeto.getBoolean("internacional")
+                                );
+                                vuelos.add(vuelo);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                },
+                error -> {
+                    Toast.makeText(VuelosActivity.this,
+                            error.getMessage(),
+                            Toast.LENGTH_SHORT).show();
+                }
+        );
+        colaPeticiones.add(peticionInformacion);
+    }
+
+    private void irAReservarVuelo(int pos) {
+        Intent intencionReservar = new Intent(this,ReservaVueloActivity.class);
+        Bundle archivoTemporal = new Bundle();
+        archivoTemporal.putSerializable("objeto_vuelo", vuelos.get(pos));
+        intencionReservar.putExtras(archivoTemporal);
+        startActivity(intencionReservar);
     }
 
     private void popularSpinnerOpciones() {

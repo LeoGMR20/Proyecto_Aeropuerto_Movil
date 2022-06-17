@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -15,8 +16,15 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.proyecto_aeropuerto.databinding.ActivityBienvenidaBinding;
 import com.example.proyecto_aeropuerto.databinding.ActivityMainBinding;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,10 +38,15 @@ public class MainActivity extends AppCompatActivity {
 
     //Generar vuelos
 
-    private ArrayList<Vuelo> vuelosSalida;
-    private ListaVuelosSalidaAdapter adaptadorVuelosSalida;
-    private ArrayList<Vuelo> vuelosLlegada;
-    private ListaVuelosLlegadaAdapter adaptadorVuelosLlegada;
+    private RequestQueue colaPeticiones;
+    private final String URL_BASE = "http://185.27.134.10/sql.php?db=epiz_31776020_AeropuertoPrototype";
+    private String endPoint1 = "/consultaVuelosSalida.php";
+    private String endPoint2 = "/consultaVuelosLlegada.php";
+
+    private ArrayList<Vuelo> vuelosSalida  = new ArrayList<>();
+    private ListaVuelosAdapter adaptadorVuelosSalida;
+    private ArrayList<Vuelo> vuelosLlegada  = new ArrayList<>();
+    private ListaVuelosAdapter adaptadorVuelosLlegada;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,13 +57,17 @@ public class MainActivity extends AppCompatActivity {
 
         //Cargado de vuelos
 
-        adaptadorVuelosSalida = new ListaVuelosSalidaAdapter(vuelosSalida,this);
+        colaPeticiones = Volley.newRequestQueue(this);
+        adaptadorVuelosSalida = new ListaVuelosAdapter(vuelosSalida,this);
         binding.lvVuelosSalida.setAdapter(adaptadorVuelosSalida);
-        adaptadorVuelosLlegada = new ListaVuelosLlegadaAdapter(vuelosLlegada,this);
+        adaptadorVuelosLlegada = new ListaVuelosAdapter(vuelosLlegada,this);
         binding.lvVuelosLlegada.setAdapter(adaptadorVuelosLlegada);
+        peticionServicioWeb(endPoint1, vuelosSalida);
+        peticionServicioWeb(endPoint2, vuelosLlegada);
 
-        popularSpinnerOpciones();
         //Evento para el item seleccionado (o no) del spinner
+        
+        popularSpinnerOpciones();
         binding.spOpciones.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -83,6 +100,40 @@ public class MainActivity extends AppCompatActivity {
                 vuelos(3);
             }
         });
+    }
+
+    private void peticionServicioWeb(String endPoint, ArrayList<Vuelo> vuelos) {
+        JsonArrayRequest peticionInformacion = new JsonArrayRequest(
+                Request.Method.GET,
+                URL_BASE+endPoint,
+                null,
+                response -> {
+                    if (response.length() > 0) {
+                        Log.d("TAG", response.toString());
+                        for (int i = 0; i < response.length(); i++) {
+                            try {
+                                JSONObject objeto = new JSONObject(response.get(i).toString());
+                                Vuelo vuelo= new Vuelo(
+                                        objeto.getInt("codVuelo"),
+                                        objeto.getInt("origen"),
+                                        objeto.getInt("destino"),
+                                        objeto.getString("nitAerolinea"),
+                                        objeto.getBoolean("internacional")
+                                );
+                                vuelos.add(vuelo);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                },
+                error -> {
+                    Toast.makeText(MainActivity.this,
+                            error.getMessage(),
+                            Toast.LENGTH_SHORT).show();
+                }
+        );
+        colaPeticiones.add(peticionInformacion);
     }
 
     private void popularSpinnerOpciones() {

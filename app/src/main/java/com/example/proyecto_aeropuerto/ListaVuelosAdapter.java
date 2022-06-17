@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import com.example.proyecto_aeropuerto.databinding.VuelosSalidaBinding;
+import com.example.proyecto_aeropuerto.databinding.VuelosBinding;
 
 import java.util.ArrayList;
 
@@ -15,7 +15,7 @@ public class ListaVuelosAdapter extends BaseAdapter {
     //Atributos
 
     private ArrayList<Vuelo> vuelos;
-    private VuelosSalidaBinding vueloBinding;
+    private VuelosBinding vueloBinding;
     private Context contexto;
 
     public ListaVuelosAdapter(ArrayList<Vuelo> vuelos, Context contexto) {
@@ -52,18 +52,18 @@ public class ListaVuelosAdapter extends BaseAdapter {
             //Cuando no es nulo usa el que ya tienes
             holder = (ViewHolder) convertView.getTag();
         }
-        /*holder.binding.txtDenominacion.setText(productos.get(position).getDenominacion());
-        holder.binding.txtCategoria.setText(productos.get(position).getCategoria());
-        holder.binding.txtPrecio.setText(String.valueOf(productos.get(position).getPrecio()));*/
+        holder.binding.tvAerolineaVuelo.setText(vuelos.get(i).getNitAerolinea());
+        holder.binding.tvVueloVuelo.setText(String.valueOf(vuelos.get(i).getCodVuelo()));
+        holder.binding.tvDestinoVuelo.setText(String.valueOf(vuelos.get(i).getDestino()));
         return convertView;
     }
 
     public static class ViewHolder{
         //Para mapear o memorizar tus vistas que vas a dibujar y los valores que le asocias.
         private View view;
-        private VuelosSalidaBinding binding; //Vista mapeada
+        private VuelosBinding binding; //Vista mapeada
 
-        public ViewHolder(VuelosSalidaBinding binding){
+        public ViewHolder(VuelosBinding binding){
             this.binding = binding;
             this.view = binding.getRoot();//R.layout.producto_item
         }

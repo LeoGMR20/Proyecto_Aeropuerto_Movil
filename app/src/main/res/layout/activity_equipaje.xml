@@ -75,6 +75,7 @@
         android:ems="10"
         android:hint="@string/txtPesoKg"
         android:inputType="numberDecimal"
+        android:minHeight="48dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline28"
         app:layout_constraintStart_toStartOf="@+id/guideline26"
         app:layout_constraintTop_toBottomOf="@+id/spTipoEquipaje" />
