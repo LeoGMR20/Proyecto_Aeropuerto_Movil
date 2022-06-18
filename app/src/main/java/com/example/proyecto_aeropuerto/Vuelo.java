@@ -1,42 +1,49 @@
 package com.example.proyecto_aeropuerto;
 
 import java.io.Serializable;
+import java.sql.Time;
 
 public class Vuelo implements Serializable {
 
     //Atributos
 
+    private String aerolinea;
+    private String horaSalida;
+    private String horaLlegada;
     private int codVuelo;
-    private int origen;
-    private int destino;
-    private String nitAerolinea;
-    private boolean internacional;
+    private String ciudad;
+    private Double precio;
 
-    public Vuelo(int codVuelo, int origen, int destino, String nitAerolinea, boolean internacional) {
+    public Vuelo(String aerolinea, String horaSalida, String horaLlegada, int codVuelo, String ciudad, Double precio) {
+        this.aerolinea = aerolinea;
+        this.horaSalida = horaSalida;
+        this.horaLlegada = horaLlegada;
         this.codVuelo = codVuelo;
-        this.origen = origen;
-        this.destino = destino;
-        this.nitAerolinea = nitAerolinea;
-        this.internacional = internacional;
+        this.ciudad = ciudad;
+        this.precio = precio;
+    }
+
+    public String getAerolinea() {
+        return aerolinea;
+    }
+
+    public String getHoraSalida() {
+        return horaSalida;
+    }
+
+    public String getHoraLlegada() {
+        return horaLlegada;
     }
 
     public int getCodVuelo() {
         return codVuelo;
     }
 
-    public int getOrigen() {
-        return origen;
+    public String getCiudad() {
+        return ciudad;
     }
 
-    public int getDestino() {
-        return destino;
-    }
-
-    public String getNitAerolinea() {
-        return nitAerolinea;
-    }
-
-    public boolean isInternacional() {
-        return internacional;
+    public Double getPrecio() {
+        return precio;
     }
 }

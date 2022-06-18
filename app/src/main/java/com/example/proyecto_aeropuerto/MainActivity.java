@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     //Generar vuelos
 
     private RequestQueue colaPeticiones;
-    private final String URL_BASE = "http://185.27.134.10/sql.php?db=epiz_31776020_AeropuertoPrototype";
+    private final String URL_BASE = "http://192.168.56.1/peticionesBD";
     private String endPoint1 = "/consultaVuelosSalida.php";
     private String endPoint2 = "/consultaVuelosLlegada.php";
 
@@ -114,11 +114,12 @@ public class MainActivity extends AppCompatActivity {
                             try {
                                 JSONObject objeto = new JSONObject(response.get(i).toString());
                                 Vuelo vuelo= new Vuelo(
-                                        objeto.getInt("codVuelo"),
-                                        objeto.getInt("origen"),
-                                        objeto.getInt("destino"),
-                                        objeto.getString("nitAerolinea"),
-                                        objeto.getBoolean("internacional")
+                                        objeto.getString("Nombre"),
+                                        objeto.getString("HoraSalida"),
+                                        objeto.getString("HoraLlegada"),
+                                        objeto.getInt("CodVuelo"),
+                                        objeto.getString("Ciudad"),
+                                        objeto.getDouble("Precio")
                                 );
                                 vuelos.add(vuelo);
                             } catch (JSONException e) {
@@ -137,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void popularSpinnerOpciones() {
-        opciones = new ArrayList<>(Arrays.asList("Escoja una opción","Inicio", "Vuelos", "Iniciar sesión", "Salir"));
+        opciones = new ArrayList<>(Arrays.asList("Escoja una opción","Inicio", "Vuelos", "Salir"));
         ArrayAdapter<String> adaptador = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_spinner_item,
@@ -161,10 +162,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intencionMain);
                 break;
             case 3:
-                intencionMain = new Intent(this,InicioSesionAdminActivity.class);
-                startActivity(intencionMain);
-                break;
-            case 4:
                 salir();
                 break;
         }

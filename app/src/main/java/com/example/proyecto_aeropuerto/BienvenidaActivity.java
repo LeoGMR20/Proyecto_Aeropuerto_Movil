@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
@@ -22,17 +24,19 @@ public class BienvenidaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         //setContentView(R.layout.activity_bienvenida);
         binding = ActivityBienvenidaBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         inicializarAnimaciones();
         ejecutarAnimaciones();
-        /*try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }*/
-        pasarOtraPantalla();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                pasarOtraPantalla();
+                finish();
+            }
+        },10000);
     }
 
 

@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.proyecto_aeropuerto.databinding.ActivityMainBinding;
 import com.example.proyecto_aeropuerto.databinding.ActivityVuelosBinding;
 
@@ -30,18 +31,19 @@ public class VuelosActivity extends AppCompatActivity {
     //Atributos
 
     private ActivityVuelosBinding binding;
-    private ArrayList<String> opciones  = new ArrayList<>();
+    private ArrayList<String> opciones = new ArrayList<>();
     Bundle filtroMain;
     int valAerolinea;
 
     //Generar vuelos
 
-    private ArrayList<Vuelo> vuelos;
-    private ListaVuelosAdapter adaptadorVuelos;
     private RequestQueue colaPeticiones;
 
-    private final String URL_BASE = "http://192.168.0.125/univalleDemoB";
-    private String endPoint = "/productos.php";
+    private ArrayList<Vuelo> vuelos = new ArrayList<>();
+    private ListaVuelosAdapter adaptadorVuelos;
+
+    private final String URL_BASE = "http://192.168.56.1/peticionesBD";
+    private String endPoint = "/consultaVuelosSalida.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,8 +58,15 @@ public class VuelosActivity extends AppCompatActivity {
 
         //-------
 
+        colaPeticiones = Volley.newRequestQueue(this);
         adaptadorVuelos = new ListaVuelosAdapter(vuelos,this);
         binding.lvVuelos.setAdapter(adaptadorVuelos);
+        try{
+            peticionServicioWeb();
+        }
+        catch (Exception E){
+            Toast.makeText(this, E.getMessage(), Toast.LENGTH_SHORT).show();
+        }
 
         //Clicks
 
@@ -84,7 +93,7 @@ public class VuelosActivity extends AppCompatActivity {
     private void peticionServicioWeb() {
         JsonArrayRequest peticionInformacion = new JsonArrayRequest(
                 Request.Method.GET,
-                URL_BASE+endPoint,
+                URL_BASE+ endPoint,
                 null,
                 response -> {
                     if (response.length() > 0) {
@@ -93,11 +102,12 @@ public class VuelosActivity extends AppCompatActivity {
                             try {
                                 JSONObject objeto = new JSONObject(response.get(i).toString());
                                 Vuelo vuelo = new Vuelo(
-                                        objeto.getInt("codVuelo"),
-                                        objeto.getInt("origen"),
-                                        objeto.getInt("destino"),
-                                        objeto.getString("nitAerolinea"),
-                                        objeto.getBoolean("internacional")
+                                        objeto.getString("Nombre"),
+                                        objeto.getString("HoraSalida"),
+                                        objeto.getString("HoraLlegada"),
+                                        objeto.getInt("CodVuelo"),
+                                        objeto.getString("Ciudad"),
+                                        objeto.getDouble("Precio")
                                 );
                                 vuelos.add(vuelo);
                             } catch (JSONException e) {
@@ -124,7 +134,7 @@ public class VuelosActivity extends AppCompatActivity {
     }
 
     private void popularSpinnerOpciones() {
-        opciones = new ArrayList<>(Arrays.asList("Escoja una opción","Inicio", "Vuelos", "Iniciar sesión"));
+        opciones = new ArrayList<>(Arrays.asList("Escoja una opción","Inicio", "Vuelos"));
         ArrayAdapter<String> adaptador = new ArrayAdapter<>(
                 this,
                 android.R.layout.simple_spinner_item,
@@ -145,10 +155,6 @@ public class VuelosActivity extends AppCompatActivity {
                 break;
             case 2:
                 intencionMain = new Intent(this,VuelosActivity.class);
-                startActivity(intencionMain);
-                break;
-            case 3:
-                intencionMain = new Intent(this,InicioSesionAdminActivity.class);
                 startActivity(intencionMain);
                 break;
         }

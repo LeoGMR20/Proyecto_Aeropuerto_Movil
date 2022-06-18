@@ -52,9 +52,10 @@ public class ListaVuelosAdapter extends BaseAdapter {
             //Cuando no es nulo usa el que ya tienes
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.binding.tvAerolineaVuelo.setText(vuelos.get(i).getNitAerolinea());
+        holder.binding.tvAerolineaVuelo.setText(vuelos.get(i).getAerolinea());
         holder.binding.tvVueloVuelo.setText(String.valueOf(vuelos.get(i).getCodVuelo()));
-        holder.binding.tvDestinoVuelo.setText(String.valueOf(vuelos.get(i).getDestino()));
+        holder.binding.tvDestinoVuelo.setText(String.valueOf(vuelos.get(i).getCiudad()));
+        holder.binding.tvFechaVuelo.setText(vuelos.get(i).getHoraSalida());
         return convertView;
     }
 

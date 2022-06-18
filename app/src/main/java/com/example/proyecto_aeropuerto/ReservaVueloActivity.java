@@ -3,6 +3,7 @@ package com.example.proyecto_aeropuerto;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -37,7 +38,7 @@ public class ReservaVueloActivity extends AppCompatActivity {
 
     private RequestQueue colaPeticiones;
     private JSONObject parametros;
-    private final String URL_BASE = "http://192.168.0.125/univalleDemoB";
+    private final String URL_BASE = "http://192.168.56.1/peticionesBD/";
     private String endPoint = "/insertarReserva.php";
 
     @Override
@@ -73,37 +74,53 @@ public class ReservaVueloActivity extends AppCompatActivity {
     }
 
     private void reservarVuelo() {
-        obtenerInformacion();
+        if(confirmarDatosNoVacios()) {
+            obtenerInformacion();
 
-        JsonObjectRequest peticionInsercionDatos = new JsonObjectRequest(
-                Request.Method.POST,
-                URL_BASE + endPoint,
-                parametros,
-                response -> {
-                    try {
-                        if (response.get("respuesta").toString().equals("ok")) {
-                            Toast.makeText(ReservaVueloActivity.this,
-                                    "Reserva guardada correctamente",
-                                    Toast.LENGTH_SHORT).show();
-                            binding.etNombresReserva.setText("");
-                            binding.etApPatReserva.setText("");
-                            binding.etApMatReserva.setText("");
-                            binding.spTipoDocumentoReserva.setSelection(0);
-                            binding.etNumDocumentoReserva.setText("");
-                        } else {
-                            Toast.makeText(ReservaVueloActivity.this,
-                                    "Algo salio mal, pruebe mas tarde",
-                                    Toast.LENGTH_SHORT).show();
+            JsonObjectRequest peticionInsercionDatos = new JsonObjectRequest(
+                    Request.Method.POST,
+                    URL_BASE + endPoint,
+                    parametros,
+                    response -> {
+                        try {
+                            if (response.get("respuesta").toString().equals("ok")) {
+                                Toast.makeText(ReservaVueloActivity.this,
+                                        "Reserva guardada correctamente",
+                                        Toast.LENGTH_SHORT).show();
+                                binding.etNombresReserva.setText("");
+                                binding.etApPatReserva.setText("");
+                                binding.etApMatReserva.setText("");
+                                binding.spTipoDocumentoReserva.setSelection(0);
+                                binding.etNumDocumentoReserva.setText("");
+                                Intent intencion = new Intent(this,MainActivity.class);
+                                startActivity(intencion);
+                            } else {
+                                Toast.makeText(ReservaVueloActivity.this,
+                                        "Algo salio mal al intertar reservar",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
                         }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
+                    },
+                    error -> {
+                        Toast.makeText(ReservaVueloActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
-                },
-                error -> {
-                    Toast.makeText(ReservaVueloActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-        );
-        colaPeticiones.add(peticionInsercionDatos);
+            );
+            colaPeticiones.add(peticionInsercionDatos);
+        }
+    }
+
+    private boolean confirmarDatosNoVacios() {
+        if(binding.etNumDocumentoReserva.getText().toString().isEmpty() ||
+            binding.etNombresReserva.getText().toString().isEmpty() ||
+            binding.etApPatReserva.getText().toString().isEmpty() ||
+            binding.etApMatReserva.getText().toString().isEmpty() ||
+            binding.spTipoDocumentoReserva.getSelectedItem().toString().equals("Escoja una opción")) {
+            Toast.makeText(this, "Ingrese todos los campos", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
     }
 
     private void obtenerInformacion() {
